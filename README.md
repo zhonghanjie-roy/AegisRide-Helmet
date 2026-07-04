@@ -1,43 +1,72 @@
 # AegisRide Helmet
 
 基于 UniKnect Gen1 Pro 的智能骑行安全头盔  
-An IoT-based cycling safety helmet powered by UniKnect Gen1 Pro, MicroPython, 4G and GNSS.
+An IoT-based intelligent cycling safety helmet powered by UniKnect Gen1 Pro, MicroPython, 4G and GNSS.
+
+---
 
 ## 项目简介
 
-AegisRide Helmet 是一个面向骑行安全场景的智能头盔项目，基于 Quectel UniKnect Gen1 Pro 开发套件和 MicroPython 开发环境，计划集成环境感知、运动状态检测、定位追踪、远程数据上传和异常预警等功能。
+AegisRide Helmet 是一款面向骑行安全场景的智能头盔原型系统，基于 Quectel UniKnect Gen1 Pro 开发套件和 MicroPython 开发环境实现。
+
+项目围绕骑行过程中的安全感知、异常检测、位置追踪和远程通信需求，集成了环境传感器、加速度传感器、GNSS 定位、4G 网络通信和心率检测模块，能够采集骑行环境与人体状态数据，并为后续跌倒检测、碰撞预警、远程求助和骑行数据分析提供基础。
 
 本项目用于参加全国大学生嵌入式芯片与系统设计竞赛，选题方向为“智能骑行头盔”。
 
-## 核心功能规划
+---
 
-- [ ] 环境数据采集：温湿度、光照等骑行环境信息
-- [ ] 运动状态检测：基于加速度传感器识别骑行状态和异常冲击
-- [ ] GNSS 定位：获取骑行位置数据
-- [ ] 4G 网络通信：上传传感器数据和定位信息
-- [ ] 异常预警：跌倒、碰撞或长时间静止时触发报警逻辑
-- [ ] 本地数据记录：保存关键传感器和事件数据
-- [ ] 可视化展示：后续接入 Web 页面或移动端展示数据
+## 核心功能
+
+- 环境数据采集：采集温湿度、光照等骑行环境信息
+- 运动状态检测：通过加速度数据判断骑行状态、冲击和异常姿态
+- GNSS 定位：获取骑行过程中的经纬度信息
+- 4G 网络通信：通过蜂窝网络上传关键数据
+- 心率检测：通过 MAX30102 心率模块采集人体状态数据
+- 本地数据记录：保存传感器数据和异常事件
+- 安全预警逻辑：为跌倒、碰撞、异常静止等场景提供判断基础
+
+---
 
 ## 技术栈
 
 | 类型 | 内容 |
 |---|---|
-| 开发板 | UniKnect Gen1 Pro |
-| 主控 | STM32 NUCLEO-F413ZH |
+| 开发套件 | Quectel UniKnect Gen1 Pro |
+| 主控板 | STM32 NUCLEO-F413ZH |
 | 通信模块 | EC200U 4G Cat.1 |
 | 开发语言 | MicroPython |
 | 开发工具 | Thonny |
-| 网络能力 | MQTT |
+| 开发系统 | macOS |
+| 网络通信 | TCP / HTTP / MQTT |
 | 定位能力 | GNSS |
-| 传感器 | 光敏、温湿度、加速度、心率模块等 |
+| 传感器 | 温湿度、光照、加速度、MAX30102 心率模块 |
 
-## 项目结构
+---
+
+## 系统架构
 
 ```text
-AegisRide-Helmet/
-├── firmware/        # MicroPython 程序代码
-├── hardware/        # 硬件接线图、模块说明、实物图
-├── docs/            # 项目文档、测试记录、答辩材料
-├── images/          # 项目展示图片
-└── README.md        # 项目说明
+┌────────────────────────────────────┐
+│        AegisRide Helmet             │
+├────────────────────────────────────┤
+│  Sensor Layer                       │
+│  - Temperature / Humidity Sensor    │
+│  - Light Sensor                     │
+│  - Accelerometer                    │
+│  - MAX30102 Heart Rate Sensor       │
+├────────────────────────────────────┤
+│  Control Layer                      │
+│  - STM32 NUCLEO-F413ZH              │
+│  - MicroPython Runtime              │
+├────────────────────────────────────┤
+│  Communication Layer                │
+│  - EC200U 4G Cat.1                  │
+│  - TCP / HTTP / MQTT                │
+│  - GNSS Positioning                 │
+├────────────────────────────────────┤
+│  Application Layer                  │
+│  - Data Collection                  │
+│  - Abnormal Event Detection         │
+│  - Remote Data Upload               │
+│  - Riding Safety Warning            │
+└────────────────────────────────────┘
