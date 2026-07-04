@@ -28,7 +28,7 @@ AegisRide Helmet 是一个面向骑行安全场景的智能头盔项目，基于
 | 通信模块 | EC200U 4G Cat.1 |
 | 开发语言 | MicroPython |
 | 开发工具 | Thonny |
-| 网络能力 | TCP / HTTP / MQTT |
+| 网络能力 | MQTT |
 | 定位能力 | GNSS |
 | 传感器 | 光敏、温湿度、加速度、心率模块等 |
 
