@@ -1,0 +1,43 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Python / MicroPython cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+config.py
+
+# Logs and generated output
+*.log
+tmp/
+output/
+dist/
+build/
+
+# Node.js, if the API or mini program helper is added later
+node_modules/
+npm-debug.log*
+
+# WeChat Mini Program private settings
+project.private.config.json
+**/project.private.config.json
+
+# Large raw media and editing projects
+Video/
+*.MOV
+*.mov
+*.mp4
+*.fcpbundle/
+
+# Office temporary locks
+~$*.docx
+~$*.xlsx
+~$*.pptx
